@@ -50,7 +50,7 @@ public class Servlet extends HttpServlet {
 		
 		String query = request.getQueryString();
 		
-		if (query != null) {
+		if (query != null && !query.isEmpty()) {
 			response.getWriter()
 			.append(System.lineSeparator())
 			.append(String.format("Value: %s", data.get(query)));
