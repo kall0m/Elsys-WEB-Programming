@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check</title>
+</head>
+<body>
+<form id="hash-form" th:action="@{/check}" method="post">
+    <p>
+        <label for="hash">HASH</label>
+        <input type="text" id="hash" placeholder="HASH" name="hash"/>
+    </p>
+
+    <p>
+        <label for="input">INPUT</label>
+        <input type="text" id="input" placeholder="INPUT" name="input"/>
+    </p>
+
+    <div>
+        <input name="submit" type="submit" id="submit" value="Submit"/>
+    </div>
+</form>
+
+<p>
+    <a th:href="@{/}">Back</a>
+</p>
+</body>
+</html>

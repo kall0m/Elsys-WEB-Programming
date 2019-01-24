@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Hash</title>
+</head>
+<body>
+<!--<script>
+    function guess() {
+        $.post( "hash", function( data ) {
+            $( ".result" ).html( data );
+        });
+    }
+</script>-->
+<div>
+    <div>
+        <h1>The Hash:</h1>
+        <p th:text="${hash}"></p>
+    </div>
+
+    <div>
+        <h1>Length:</h1>
+        <p th:text="${length}"></p>
+    </div>
+
+    <form id="hash-form" th:action="@{/hash}" method="post">
+        <div>
+            <input name="guess" type="submit" id="guess" value="Guess"/>
+        </div>
+    </form>
+
+    <!--<input name="guess" type="submit" value="Guess" onclick="guess()" />-->
+
+    <div th:if="${guessedBytes}">
+        <h1>Guessed Byte Array:</h1>
+        <p th:text="${guessedBytes}"></p>
+
+        <p>
+            <a th:href="@{/check}">Check</a>
+        </p>
+    </div>
+</div>
+
+<p>
+    <a th:href="@{/}">Back</a>
+</p>
+</body>
+</html>
