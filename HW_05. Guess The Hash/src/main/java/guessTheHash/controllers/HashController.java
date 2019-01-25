@@ -12,7 +12,7 @@ import java.util.Random;
 
 @Controller
 public class HashController {
-    private static int length = 1;
+    private static int length = 3;
     private static Random random = new Random();
     private static byte[] bytes;
     private static String hash;
@@ -74,15 +74,18 @@ public class HashController {
 
     @RequestMapping(value = "/check", method = RequestMethod.POST)
     public ResponseEntity checkBytesPost(@RequestParam("hash") String hash, @RequestParam("input") String input) {
-        if (input.equals(Base64.encodeBase64String(bytes))) {
+        if (input.equals(Base64.encodeBase64String(bytes)) && hash.equals(this.hash)) {
             bytes = new byte[length];
             random.nextBytes(bytes);
 
             this.hash = md5Spring(bytes);
 
+            System.out.println(HttpStatus.OK);
+
             return new ResponseEntity(HttpStatus.OK);
         } else {
-            return new ResponseEntity(HttpStatus.OK);
+            System.out.println(HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
         }
     }
 }
